@@ -1,0 +1,23 @@
+volumes:
+  mqtt_config:
+  mqtt_data:
+  mqtt_log:
+
+services:
+  mosquitto:
+    container_name: "eclipse-mosquitto"
+    restart: "unless-stopped"
+    environment:
+      - "TZ=EST5EDT"
+
+    hostname: "mqtt"
+    image: "eclipse-mosquitto:2.0.20"
+    ports:
+      - "1883:1883"
+
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "mqtt_config:/mosquitto/config"
+      - "mqtt_data:/mosquitto/data"
+      - "mqtt_log:/mosquitto/log"
+      - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
