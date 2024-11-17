@@ -9,12 +9,12 @@ services:
     restart: "unless-stopped"
     environment:
       - "TZ=EST5EDT"
-
+      - DEFAULT_USERNAME=$DEFAULT_USERNAME
+      - DEFAULT_PASSWORD=$DEFAULT_PASSWORD
     hostname: "mqtt"
-    image: "eclipse-mosquitto:2.0.20"
+    build: mosquitto
     ports:
       - "1883:1883"
-
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "mqtt_config:/mosquitto/config"
