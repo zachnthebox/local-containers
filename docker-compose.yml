@@ -9,8 +9,8 @@ services:
     restart: "unless-stopped"
     environment:
       - "TZ=EST5EDT"
-      - DEFAULT_USERNAME=$DEFAULT_USERNAME
-      - DEFAULT_PASSWORD=$DEFAULT_PASSWORD
+      - DEFAULT_USERNAME=$DEFAULT_MQTT_USERNAME
+      - DEFAULT_PASSWORD=$DEFAULT_MQTT_PASSWORD
     hostname: "mqtt"
     build: mosquitto
     ports:
